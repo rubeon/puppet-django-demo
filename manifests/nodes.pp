@@ -11,7 +11,7 @@ node 'puppet-standalone' {
 }
 
 
-node "lb-compute-nodes" {
+node "lb-compute-web-nodes" {
   include nginx
   include cron
   
@@ -27,14 +27,26 @@ node "lb-compute-nodes" {
   }
   
   cron::job {
-      'puppet-apply':
-      minute => '*',
+      'puppet-git-update':
+      minute => '*/5',
       hour => '*',
       date => '*',
       month => '*',
       weekday => '*',
       user => 'root',
-      command => 'puppet apply /opt/puppet-django-demo/manifests/sites.pp --modulepath=/opt/puppet-django-demo/modules',
+      command => '',
+      
+  }
+
+  cron::job {
+      'puppet-apply':
+      minute => '*/5',
+      hour => '*',
+      date => '*',
+      month => '*',
+      weekday => '*',
+      user => 'root',
+      command => 'cd /opt/puppet-django-demo/ && git pull && puppet apply /opt/puppet-django-demo/manifests/sites.pp --modulepath=/opt/puppet-django-demo/modules',
       
   }
   
