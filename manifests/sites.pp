@@ -1,8 +1,10 @@
 import  'nodes.pp'
 
+/*
 node default {
     include nginx
 }
+*/
 
 user { 'ubuntu':
     comment => 'Ubuntu User',
