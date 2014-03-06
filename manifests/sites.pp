@@ -9,7 +9,7 @@ user { 'ubuntu':
     home => '/home/ubuntu',
     ensure => present,
     managehome => true,
-    #shell => '/bin/bash',
+    shell => '/bin/bash',
     #uid => '501',
     #gid => '20',    
 }
@@ -18,12 +18,12 @@ user { 'eric':
     comment => 'Eric Williams',
     home => '/home/eric',
     ensure => present,
-    #shell => '/bin/bash',
+    shell => '/bin/bash',
     #uid => '501',
     #gid => '20',
     managehome => true,
+    password => '$1$0mAIBnWj$Oz0bWZVkg9D3YsHp0UkFy1',
 }
-
 
 ssh_authorized_key {
     'ubuntu_ssh':

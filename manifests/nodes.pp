@@ -27,18 +27,6 @@ node "lb-compute-web-nodes" {
   }
   
   cron::job {
-      'puppet-git-update':
-      minute => '*/5',
-      hour => '*',
-      date => '*',
-      month => '*',
-      weekday => '*',
-      user => 'root',
-      command => '',
-      
-  }
-
-  cron::job {
       'puppet-apply':
       minute => '*/5',
       hour => '*',
