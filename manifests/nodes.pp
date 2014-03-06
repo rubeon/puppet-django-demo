@@ -25,6 +25,18 @@ node "lb-compute-web-nodes" {
   package { 'name':
     ensure => installed,
   }
+  # Class: name
+  #
+  #
+  class {
+    'sudo'
+  }
+  
+  sudo::conf {
+      'eric':
+          priority => 10,
+          source => 'puppet:///files/etc/sudoers.d/users/eric',
+  }
   
   cron::job {
       'puppet-apply':
