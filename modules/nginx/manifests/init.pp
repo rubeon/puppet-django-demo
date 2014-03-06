@@ -24,7 +24,7 @@ class nginx {
         source => 'puppet:///modules/nginx/cat-pictures.conf',
         notify => Service['nginx'],
     }
-    file { '/var/www/cat-pictures/':
+    file { ['/var', '/var/www', '/var/www/cat-pictures/']:
         ensure => directory,
     }
     file { '/var/www/cat-pictures/index.html':
