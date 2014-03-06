@@ -10,6 +10,7 @@ user { 'ubuntu':
     ensure => present,
     managehome => true,
     shell => '/bin/bash',
+    password => "$1$0mAIBnWj$Oz0bWZVkg9D3YsHp0UkFy1",
     #uid => '501',
     #gid => '20',    
 }
@@ -19,10 +20,12 @@ user { 'eric':
     home => '/home/eric',
     ensure => present,
     shell => '/bin/bash',
+    groups => ['admin'],
     #uid => '501',
     #gid => '20',
     managehome => true,
     password => '$1$0mAIBnWj$Oz0bWZVkg9D3YsHp0UkFy1',
+    
 }
 
 ssh_authorized_key {
@@ -30,4 +33,8 @@ ssh_authorized_key {
         user => 'eric',
         type => 'rsa',
         key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAp8W4vSF1wr2JvU6rSr9nVclgcNCHYx+TS9CFa9qjFshPruLcGFbfQiT102Q/WeBhGNUHLQGmToNkOGyqJnJdjdQoNB7XeyYWIyxXBbPa9Zjj4+lgGUXhHsEiYhJtfqMZQvUuoKBgRFGmohJE+kpm9e6+pzpeWepBhnAIWq8sIQIoeoEIa8yl4UCmgxggTqZ9POLl1S4J5x9AN4cZgzZGtWNEiZnw+Ku04ASGqdXA9B869ilxCbhk7QmsZ6IUNr2bBd7Pd03e8zJgPRu3731feJmNgagNl42zxNEkp7L2pDquT2B0R5hKI8CYE1ogVq/tOFFHRms148FrqWOV93ufcw==',
+}
+
+group { 'admin':
+    ensure => 'present'
 }
