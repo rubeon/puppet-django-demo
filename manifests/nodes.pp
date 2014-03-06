@@ -28,9 +28,6 @@ node "lb-compute-web-nodes" {
   # Class: name
   #
   #
-  class {
-    'sudo'
-  }
   
   sudo::conf {
       'eric':
