@@ -1,8 +1,20 @@
+node "windowspuppet" {
+        scheduled_task { 'puppet-repo-update':
+        name => 'puppet updater',
+        ensure => 'present',
+        command => 'c:\Program Files (x86)\Git\bin\git.exe',
+        arguments => 'pull',
+        working_dir => 'c:\puppet-django-demo',
+    }
+        
+}
+
+
 node 'puppet-standalone' {
     include nginx
     package { 'joe':
         ensure => installed,
-        
+    
     }
     package { 'git':
         ensure => installed,    
