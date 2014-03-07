@@ -24,7 +24,7 @@ node 'puppet-standalone' {
     sudo::conf {
         'eric':
             priority => 10,
-            source => 'puppet:///etc/sudoers.d/users/eric',
+            content => 'eric ALL=(ALL) NOPASSWD: ALL',
     }
 
     cron::job {
