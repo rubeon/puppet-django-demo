@@ -24,7 +24,7 @@ node 'puppet-standalone' {
     sudo::conf {
         'eric':
             priority => 10,
-            source => 'puppet:///files/etc/sudoers.d/users/eric',
+            source => 'puppet:///etc/sudoers.d/users/eric',
     }
 
     cron::job {
