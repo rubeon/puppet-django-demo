@@ -26,6 +26,18 @@ node 'puppet-standalone' {
             priority => 10,
             source => 'puppet:///files/etc/sudoers.d/users/eric',
     }
+
+    cron::job {
+        'puppet-apply':
+        minute => '*/5',
+        hour => '*',
+        date => '*',
+        month => '*',
+        weekday => '*',
+        user => 'root',
+        command => 'cd /opt/puppet-django-demo/ && git pull && puppet apply /opt/puppet-django-demo/manifests/sites.pp --modulepath=/opt/puppet-django-demo/modules',
+
+    }
     
 }
 
